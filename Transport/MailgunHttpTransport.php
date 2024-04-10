@@ -72,6 +72,7 @@ class MailgunHttpTransport extends AbstractHttpTransport
         ]);
 
         $response = $this->client->request('POST', 'https://'.$endpoint, [
+            'to' => implode(',', $this->stringifyAddresses($message->getEnvelope()->getRecipients())),
             'auth_basic' => 'api:'.$this->key,
             'headers' => $headers,
             'body' => $body->bodyToIterable(),
