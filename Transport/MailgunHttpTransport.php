@@ -64,7 +64,6 @@ class MailgunHttpTransport extends AbstractHttpTransport
         $endpoint = sprintf('%s/v3/%s/messages.mime', $this->getEndpoint(), urlencode($this->domain));
 
         logger()->debug('MailgunHttpTransport::doSendHttp() was called.', [
-            'to' => implode(',', $this->stringifyAddresses($message->getEnvelope()->getRecipients())),
             'body' => $body->bodyToIterable(),
             'headers' => $headers,
             'endpoint' => $endpoint,
