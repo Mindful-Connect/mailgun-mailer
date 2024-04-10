@@ -65,7 +65,8 @@ class MailgunHttpTransport extends AbstractHttpTransport
 
         logger()->debug('MailgunHttpTransport::doSendHttp() was called.', [
             'to' => implode(',', $this->stringifyAddresses($message->getEnvelope()->getRecipients())),
-            'message' => $message,
+            'message' => $message->toString(),
+            'body' => $body->toString(),
             'headers' => $headers,
             'endpoint' => $endpoint,
         ]);
